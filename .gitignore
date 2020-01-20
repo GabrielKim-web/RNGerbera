@@ -2,8 +2,10 @@
 
 # dependencies
 /node_modules
+/db/is_admin.sql
 /.pnp
 .pnp.js
+.env
 
 # testing
 /coverage

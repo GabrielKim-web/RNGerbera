@@ -1,0 +1,19 @@
+UPDATE songs
+SET song_id = $1,
+title = $2,
+title_translated = $3,
+title_romanized = $4,
+artist = $5,
+nov_level = $6,
+nov_link = $7,
+adv_level = $8,
+adv_link = $9,
+exh_level = $10,
+exh_link = $11,
+mxm_level = $12,
+mxm_link = $13,
+video_play = $14,
+video_nofx = $15,
+video_og = $16,
+jacket = $17
+WHERE id = $18
