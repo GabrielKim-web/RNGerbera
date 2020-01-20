@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
 
 class DefaultSongSet extends Component {
    constructor() {
@@ -40,4 +41,4 @@ class DefaultSongSet extends Component {
    }
 }
 
-export default DefaultSongSet;
+export default connect()(DefaultSongSet)

@@ -13,14 +13,15 @@ const ADD_SONGSET = 'ADD_SONGSET';
 const DELETE_SONGSET = 'DELETE_SONGSET';
 const GET_SONGSET = 'GET_SONGSET';
 
-export function getNumFilteredSongs() {
+export function getNumFilteredSongs(obj) {
    //this function will be used to pull eligible songs for that one song being pulled
    //parameters go here; this is just a sample for now
    //we will determine what level to pull here given a range
    let level = 17;
    return {
       type: 'GET_NUMFILTEREDSONGS',
-      payload: axios.get(`/api/songs/condition/${level}`)
+      // even if we want to just get, we can ALWAYS pass an object in req.body
+      payload: axios.get(`/api/songs/condition/${level}`, obj.numSongs)
    }
 }
 
