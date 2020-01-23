@@ -3,11 +3,11 @@ const express = require('express');
 const session = require('express-session');
 const massive = require('massive');
 const app = express();
-const {registerUser, registerAdmin, loginUser, logoutUser, getCurrentUser} = require('./controllers/usercontroller');
-const {getSongList, getSong, getNumSongs, addSong, deleteSong, editSong} = require('./controllers/songcontroller');
-const {getNumFilteredSongs, getSpecificSong} = require('./controllers/songsetcontroller');
+const {registerUser, registerAdmin, loginUser, logoutUser, getCurrentUser, getUser, getUserName} = require('./controllers/usercontroller');
+const {getSongList, getFavSong, getNumSongs, addSong, deleteSong, editSong, addFavSong} = require('./controllers/songcontroller');
+const {getNumFilteredSongs, getDefaultSongSet} = require('./controllers/songsetcontroller');
 
-const {SERVER_PORT, SESSION_SECRET, CONNECTION_STRING, REACT_APP_ADMIN_SECRET} = process.env;
+const {SERVER_PORT, SESSION_SECRET, CONNECTION_STRING} = process.env;
 
 app.use(express.json());
 app.use(session({
@@ -30,15 +30,15 @@ app.post('/user/login', loginUser);
 app.post('/user/logout', logoutUser);
 app.post('/user/register', registerUser);
 app.post(`/user/registeradmin`, registerAdmin);
-// app.get('/user/mypage/:id', getCurrentUser);
 app.get('/user', getCurrentUser);
+app.get('/user/songs/:user_id', getUser);
+app.get('/user/:user_id', getUserName);
 
 //song endpoints
-// app.get('/api/songs/get', getSongList);
 app.get('/api/songs/get/:pagenum', getSongList);
 app.get('/api/songs/', getNumSongs);
-//EXTRA if I decide to implement it; probably will due to editSong
-app.get('/api/songs/get/:songToGet', getSong);
+app.post('/api/songs/addFav/', addFavSong);
+app.get('/api/songs/getFav/', getFavSong);
 
 //admin controls for song database
 app.post('/api/songs/add', addSong);
@@ -46,10 +46,10 @@ app.delete('/api/songs/delete/:song_id', deleteSong);
 app.put('/api/songs/edit/:songToEdit', editSong);
 
 //songset endpoints
-app.get('/api/songs/condition/:level', getNumFilteredSongs)
+app.get('/api/songs/homesongset/:level', getNumFilteredSongs)
 
 //MUST MAKE MORE ENDPOINTS FROM songsetReducer
-app.get('/api/songs/get/:songToGet', getSpecificSong)
+app.post('/api/songs/defaultsongset', getDefaultSongSet)
 
 
 

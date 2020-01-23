@@ -1,0 +1,41 @@
+/* Bootstrap! How do use? Be sure to install it first (npm install bootstrap)
+Require the Bootstrap components that you need. 
+*/
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Raleway|Roboto+Slab|Ubuntu&display=swap');
+
+//import required Bootstrap components
+// @import "../../node_modules/bootstrap/scss/functions";
+// @import "../../node_modules/bootstrap/scss/variables";
+// @import "../../node_modules/bootstrap/scss/mixins";
+
+//import optional Bootstrap components
+// For now, let's just install everything and experiment.
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
+
+%entire-shared {
+   width: 100vw;
+   display: flex;
+}
+body {
+   // extend shares the set of CSS properties from one selector to another
+   @extend %entire-shared;
+   background-color: rgb(201, 235, 241);
+   font-family: 'Montserrat', 'Raleway', 'Roboto+Slab', 'Ubuntu', 'Courier New';
+}
+#root, .App {
+   @extend %entire-shared;
+   width: 100%;
+   height: 100vh;
+   flex-direction: column;
+}
+.navbar {
+   width: 100%;
+   background-color: lightblue;
+}
+
+.main {
+   margin-top: 58px;
+   width: 100%;
+   height: 100%;
+}

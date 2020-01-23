@@ -2,15 +2,17 @@ import axios from 'axios';
 //we are going to store the songlist (all of those songs) into a global store state here
 const initialState = {
    songlist: [],
-   numSongs: null
+   numSongs: null,
+   favSongs: null
 }
 
 const GET_SONGLIST = 'GET_SONGLIST';
 const GET_NUMSONGS = 'GET_NUMSONGS';
-// const GET_SONG = 'GET_SONG';
+const GET_FAV_SONG = 'GET_FAV_SONG';
 const ADD_SONG = 'ADD_SONG';
 const DELETE_SONG = 'DELETE_SONG';
 const EDIT_SONG = 'EDIT_SONG;'
+const ADD_FAV_SONG = 'ADD_FAV_SONG';
 
 export function getSongList(pageNum) {
    return {
@@ -25,12 +27,18 @@ export function getNumSongs() {
       payload: axios.get('/api/songs/')
    }
 }
-// export function getSong() {
-//    return {
-//       type: 'GET_SONG',
-//       payload: axios.get('/api/songs/get/:id')
-//    }
-// }
+export function addFavSong(user_id, song_id) {
+   return {
+      type: 'GET_FAV_SONG',
+      payload: axios.post(`/api/songs/addFav/`, {user_id, song_id})
+   }
+}
+export function getFavSong() {
+   return {
+      type: 'GET_SONG',
+      payload: axios.get('/api/songs/get/:id')
+   }
+}
 export function addSong(songToBeAdded) {
    return {
       type: 'ADD_SONG',
@@ -63,10 +71,16 @@ export default function reducer(state = initialState, action) {
             ...state,
             numSongs: payload.data[0].count
          }
-      // case `${GET_SONG}_FULFILLED`:
-      //    return {
-            
-      //    }
+      case `${GET_FAV_SONG}_FULFILLED`:
+         return {
+            ...state,
+            favSongs: payload.data
+         }
+      case `${ADD_FAV_SONG}_FULFILLED`:
+         return {
+            ...state,
+            favSongs: payload.data
+         }
       case `${ADD_SONG}_FULFILLED`:
          return {
             ...state,

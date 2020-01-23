@@ -58,7 +58,9 @@ class Song extends Component {
             <th><a href={adv_link} alt="sdvx.in ADV" target="_blank" rel="noopener noreferrer" title="hahargh">{adv_level}</a></th>
             <th><a href={exh_link} alt="sdvx.in EXH" target="_blank" rel="noopener noreferrer" title="hahargh">{exh_level}</a></th>
             <th><a href={mxm_link} alt="sdvx.in MXM" target="_blank" rel="noopener noreferrer" title="hahargh">{mxm_level}</a></th>
-            <th><a href={video_nofx} alt="NO_FX Youtube" target="_blank" rel="noopener noreferrer" title="hahargh">NO FX</a></th>
+            {/* <th><a href={video_nofx} alt="NO_FX Youtube" target="_blank" rel="noopener noreferrer" title="hahargh">NO FX</a></th> */}
+            {video_nofx ? <th><a href={video_nofx} alt="NO_FX Youtube" target="_blank" rel="noopener noreferrer" title="hahargh">NO FX</a></th>
+            : <th></th>}
             <th><button onClick={() => {
                // BLACK DIAMOND: Add confirmation window to confirm deleting of song
                this.props.delete(id);

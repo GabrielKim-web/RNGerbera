@@ -4,7 +4,6 @@ import {getUser} from '../../redux/reducers/userReducer';
 import DefaultSongSet from './DefaultSongSet';
 import LevelSelectSongSet from './LevelSelectSongSet';
 import WeightApplierSongSet from './WeightApplierSongSet';
-
 class SongSet extends Component {
    constructor() {
       super();
@@ -24,13 +23,13 @@ class SongSet extends Component {
    }
 
    render() {
-      // if(!this.props.user_id) {
-      //    return(
-      //       <div id="SongSetError">
-      //          <h3>You must be logged in to do that.</h3>
-      //       </div>
-      //    )
-      // } else {
+      if(!this.props.user_id) {
+         return(
+            <div id="SongSetError">
+               <h3>You must be logged in to do that.</h3>
+            </div>
+         )
+      } else {
          switch(this.state.currentSearchState) {
             case('levelrange'):
                return (
@@ -52,13 +51,13 @@ class SongSet extends Component {
                )
          }
       }
-   // }
+   }
 }
 
 const mapStateToProps = reduxState => {
    return {
       user_id: reduxState.user.user_id,
-      username: reduxState.user.username
+      username: reduxState.user.username,
    }
 }
 

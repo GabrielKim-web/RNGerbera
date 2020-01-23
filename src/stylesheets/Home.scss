@@ -1,0 +1,17 @@
+%full-width-flex {
+   width: 100%;
+   display: flex;
+}
+
+#home {
+   height: 100%;
+   @extend %full-width-flex;
+}
+
+.homeSongSet {
+   @extend %full-width-flex;
+   display: flex;
+   padding: 10px, 40px;
+   justify-content: space-evenly;
+   flex-wrap: wrap;
+}

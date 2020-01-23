@@ -1,13 +1,13 @@
 import React from 'react';
 import Navigation from './Components/Navigation/Navigation';
 import routes from './routes';
-import './App.css';
+import './stylesheets/App.css';
 
 function App() {
   return (
     <div className="App">
-      {/* this Nav header should be loaded in every component regardless of what is on screen */}
-      <header className="Nav">
+      {/* strange className? Thanks Bootstrap! It automatically applies good shit */}
+      <header className="navbar">
         <Navigation />
       </header>
       <div className="main">

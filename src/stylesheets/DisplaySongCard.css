@@ -1,0 +1,71 @@
+@use 'Home';
+#DisplaySongCard {
+  background-color: white;
+  border: 1px solid black;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 300px;
+  height: 300px;
+  margin: 20px;
+  padding: 20px;
+  border-radius: 20px;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  text-align: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#DisplaySongCard .defaultTitle {
+  font-size: 1.4rem;
+  margin: auto;
+}
+
+#DisplaySongCard .longTitle {
+  font-size: 1rem;
+  margin: auto;
+}
+
+#DisplaySongCard a {
+  font-size: 1.5rem;
+}
+
+#DisplaySongCard img {
+  width: 40%;
+  margin: 10px;
+}
+
+#DisplaySongCard button {
+  margin-left: 200px;
+  width: 15px;
+  height: 15px;
+}
+
+.buttonLinks {
+  height: 10%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+@media screen and (max-width: 500px) {
+  #DisplaySongCard {
+    height: 40vh;
+    width: 70vw;
+  }
+  #DisplaySongCard button {
+    margin-left: 60vw;
+  }
+}
+/*# sourceMappingURL=DisplaySongCard.css.map */

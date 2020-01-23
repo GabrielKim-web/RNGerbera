@@ -12,7 +12,7 @@ const getNumSongs = async (req, res) => {
    res.status(200).json(numSongs);
 }
 
-const getSong = async (req, res) => {
+const getFavSong = async (req, res) => {
 
 }
 const addSong = async (req, res) => {
@@ -35,12 +35,19 @@ const editSong = async (req, res) => {
    const songEdited = await db.edit_song(song_id, title, title_translated, title_romanized, artist, nov_level, nov_link, adv_level, adv_link, exh_level, exh_link, mxm_level, mxm_link, video_play, video_nofx, video_og, jacket, songToEdit)
    res.status(200).json(songEdited);
 }
+const addFavSong = async (req, res) => {
+   const db = req.app.get('db');
+   const {user_id, song_id} = req.body;
+   const favSongAdded = await db.add_fav_song(user_id, song_id);
+   res.status(200).json(favSongAdded);
+}
 
 module.exports = {
    getSongList,
    getNumSongs,
-   getSong,
+   getFavSong,
    addSong,
    deleteSong,
-   editSong
+   editSong,
+   addFavSong
 }

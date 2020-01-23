@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import {getUser, logoutUser} from '../../redux/reducers/userReducer';
+// import {Nav, Navbar, NavDropdown} from 'react-bootstrap';
+import '../../stylesheets/Navigation.css';
 
 class Navigation extends Component {
 
@@ -13,28 +15,33 @@ class Navigation extends Component {
    render() {
       const {user_id, username} = this.props
       return(
-         <div id="Navigation">
-            <header>
-               <Link to={'/'}>Kyoukuken</Link>
-            </header>
-            {/* The links to either MyPage, or Login / Register should be conditionally rendered */}
-            <div className="userinfo">
+         <div className="container">
+            <div className="navbar-brand">
+               <Link to={'/'}>RNGerbera</Link>
+            </div>
+            {/* <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navmenu" aria-controls="navmenu" aria-expanded="false" aria-label="Toggle navigation">
+               <span className="navbar-toggler-icon">oof</span>
+            </button> */}
+            {/* <div className="collapse navbar-collapse navigationmenu" id="navmenu"> */}
+            <ul className="navmenu">
+               <div className="usercred">
                {this.props.username ? (
-                  <div>
-                     <Link to={`/user/mypage/${user_id}`}>{username}</Link>
-                     <button className="logout" onClick={() => this.props.logoutUser()}>Logout</button>
+                  <div className="user">
+                     <li><Link to={`/user/mypage/${user_id}`}>{username}</Link></li>
+                     <li><button className="logout" onClick={() => this.props.logoutUser()}>Logout</button></li>
                   </div>
                ) : (
-                  <div>
-                     <Link to="/user/login">Log in</Link>
-                     <Link to="/user/register">Register</Link>
+                  <div className="login">
+                     <li><Link to="/user/login">Log in</Link></li>
+                     <li><Link to="/user/register">Register</Link></li>
                   </div>
                )}
-            </div>
-            <div className="navmenu">
-               <Link to="/songset">Random Songset</Link>
-               <Link to="/songlist">Song list</Link>
-            </div>
+               </div>
+               <div className="persistent">
+                  <li><Link to="/songset">Generate</Link></li>
+                  <li><Link to="/songlist">Song list</Link></li>
+               </div>
+            </ul>
          </div>
       )
    }

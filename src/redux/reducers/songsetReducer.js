@@ -1,6 +1,5 @@
 import axios from 'axios';
 const initialState = {
-   songSetLength: 3,
    numSongsDataBase: null,
    homeSongSet: [],
    userGeneratedSongSet: [],
@@ -8,41 +7,23 @@ const initialState = {
 }
 
 const GET_NUMFILTEREDSONGS = 'GET_NUMFILTEREDSONGS';
-const GET_SPECIFICSONG = 'GET_SPECIFICSONG';
-const ADD_SONGSET = 'ADD_SONGSET';
+const GET_DEFAULTSONGSET = 'GET_DEFAULTSONGSET';
 const DELETE_SONGSET = 'DELETE_SONGSET';
 const GET_SONGSET = 'GET_SONGSET';
 
-export function getNumFilteredSongs(obj) {
-   //this function will be used to pull eligible songs for that one song being pulled
-   //parameters go here; this is just a sample for now
-   //we will determine what level to pull here given a range
+export function getNumFilteredSongs() {
+   //this function is for the homeSongSet only; level should determined here
    let level = 17;
    return {
       type: 'GET_NUMFILTEREDSONGS',
-      // even if we want to just get, we can ALWAYS pass an object in req.body
-      payload: axios.get(`/api/songs/condition/${level}`, obj.numSongs)
+      payload: axios.get(`/api/songs/homesongset/${level}`)
    }
 }
 
-export function getSpecificSong() {
-   //this function will be called multiple times depending on how many songs are in the list
-   //an ID should already be determined before they get here (pull it from database)
-   //a sample is determined for now; id should be passed via argument later
-   let songToGet = 538
+export function getDefaultSongSet(obj) {
    return {
-      type: 'GET_SPECIFICSONG',
-      payload: axios.get(`/api/songs/get/${songToGet}`)
-   }
-}
-
-export function addSongSet(songSet) {
-   //this function will add one new songSet to the database and assign it an owner value
-   //EXTRA: Add button to Home Songset that if the user wants to grab that daily songset, add it to his/her own!
-   //songSet will be created on the client side and sent here to add it to the database
-   return {
-      type: 'ADD_SONGSET',
-      payload: axios.post(`/songset/add`, songSet)
+      type: 'GET_DEFAULTSONGSET',
+      payload: axios.post(`/api/songs/defaultsongset`, obj)
    }
 }
 
@@ -69,17 +50,10 @@ export default function reducer(state=initialState, action) {
             ...state,
             homeSongSet: payload.data
          }
-      case(`${GET_SPECIFICSONG}_FULFILLED`):
-      //this is returned, pushed to a songset, then repeated 3-7 times
+      case(`${GET_DEFAULTSONGSET}_FULFILLED`):
          return {
             ...state,
-            selectedSong: payload.data
-         }
-      case(`${ADD_SONGSET}_FULFILLED`):
-      //the songset added is returned to a database
-         return {
-            ...state,
-            homeSongSet: payload.data
+            userGeneratedSongSet: payload.data
          }
       case(`${DELETE_SONGSET}_FULFILLED`):
       //only user-generated songsets that the user owns can be deleted

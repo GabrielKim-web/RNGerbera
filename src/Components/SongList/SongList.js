@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {getSongList, getNumSongs, addSong, deleteSong, editSong} from '../../redux/reducers/songReducer';
 import Song from '../Song/Song';
 import AddSong from '../AddSong/AddSong';
+import '../../stylesheets/SongList.css';
 
 class SongList extends Component {
    constructor() {
@@ -48,16 +49,18 @@ class SongList extends Component {
       const {pageNum} = this.state;
       return(
          <div id="SongList">
-            <h1>SongList</h1>
-            {/* 1/16 9:21: AddSong button should only show if the user is an admin
-            Check the user currently logged in to see if this true or not. */}
-            <AddSong addSong={this.props.addSong}
-            update={this.updateSongList}/>
+            <div className="songlistdata">
+               <h1>SongList</h1>
+               {/* 1/16 9:21: AddSong button should only show if the user is an admin
+               Check the user currently logged in to see if this true or not. */}
+               <AddSong addSong={this.props.addSong}
+               update={this.updateSongList}/>
+            </div>
             {/* 1/15 10:31: Need to style this table. */}
             <table className="songTable">
                <thead>
                   <tr className="header">
-                     <th>ID</th>
+                     <th>#</th>
                      <th>Jacket</th>
                      <th>Name</th>
                      <th>NOV</th>
@@ -65,6 +68,8 @@ class SongList extends Component {
                      <th>EXH</th>
                      <th>MXM</th>
                      <th>NO_FX</th>
+                     {/* User must be admin for this column to appear. */}
+                     <th></th>
                   </tr>
                </thead>
                <tbody>
@@ -81,9 +86,9 @@ class SongList extends Component {
                </tbody>
             </table>
             {songList && numSongs ? 
-               <div className="table navigation">
+               <div className="tablenavigation">
                   <button onClick={() => this.prevGroup()}>Prev</button>
-                  <strong>Page {pageNum} of {Math.ceil(numSongs / 50)}</strong>
+                  <strong className="page">Page {pageNum} of {Math.ceil(numSongs / 50)}</strong>
                   <button onClick={() => this.nextGroup()}>Next</button>
                </div>
              : null}

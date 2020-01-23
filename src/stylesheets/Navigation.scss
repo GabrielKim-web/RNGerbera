@@ -1,0 +1,39 @@
+%flex-row {
+   display: flex;
+   flex-direction: row;
+}
+.navmenu {
+   display: flex;
+   float: right;
+   flex-direction: row;
+   justify-content: space-evenly;
+   margin: 0;
+   padding: 0;
+   // https://www.w3schools.com/css/css_navbar.asp
+   .login li, .user li, .persistent li {
+      display: flex;
+      list-style-type: none;
+      border-left: 1px solid white;
+      width: 100px;
+      text-align: center;
+      justify-content: center;
+   }
+   .usercred {
+      @extend %flex-row;
+   }
+   .persistent {
+      @extend %flex-row;
+   }
+   .login {
+      @extend %flex-row;
+   }
+   .user {
+      @extend %flex-row;
+   }
+}
+
+@media screen and (max-width: 768px) {
+   .navmenu {
+      display: none;
+   }
+}

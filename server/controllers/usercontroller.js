@@ -84,10 +84,27 @@ const getCurrentUser = (req, res) => {
    res.status(200).json(req.session.user);
 }
 
+const getUser = async (req, res) => {
+   const db = req.app.get('db');
+   const {user_id} = req.params;
+   const userData = await db.get_page_user(user_id);
+   res.status(200).json(userData);
+}
+
+const getUserName = async (req, res) => {
+   // we can grab other things here, just DO NOT GRAB THE PASSWORD.
+   const db = req.app.get('db');
+   const {user_id} = req.params;
+   const username = await db.get_user_name(user_id)
+   res.status(200).json(username[0].username)
+}
+
 module.exports = {
    registerUser,
    registerAdmin,
    loginUser,
    logoutUser,
-   getCurrentUser
+   getCurrentUser,
+   getUser,
+   getUserName
 }

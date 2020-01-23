@@ -1,0 +1,27 @@
+%table-common-elements {
+   border: 1px solid black;
+   text-align: center;
+}
+#SongList {
+   .songlistdata {
+      width: 50%;
+      text-align: center;
+      margin: auto;
+   }
+   .songTable, tr {
+      @extend %table-common-elements;
+      background-color: white;
+      margin: auto;
+   }
+   th {
+      padding: 4px;
+   }
+   .tablenavigation {
+      padding: 10px;
+      margin: auto;
+      text-align: center;
+   }
+   .page {
+      padding: 0 10px;
+   }
+}

@@ -1,0 +1,30 @@
+#SongList .songTable, #SongList tr {
+  border: 1px solid black;
+  text-align: center;
+}
+
+#SongList .songlistdata {
+  width: 50%;
+  text-align: center;
+  margin: auto;
+}
+
+#SongList .songTable, #SongList tr {
+  background-color: white;
+  margin: auto;
+}
+
+#SongList th {
+  padding: 4px;
+}
+
+#SongList .tablenavigation {
+  padding: 10px;
+  margin: auto;
+  text-align: center;
+}
+
+#SongList .page {
+  padding: 0 10px;
+}
+/*# sourceMappingURL=SongList.css.map */
