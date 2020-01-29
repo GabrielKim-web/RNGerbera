@@ -11,6 +11,7 @@ const GET_DEFAULTSONGSET = 'GET_DEFAULTSONGSET';
 const GET_WEIGHTSONGSET = 'GET_WEIGHTSONGSET';
 const DELETE_SONGSET = 'DELETE_SONGSET';
 const GET_SONGSET = 'GET_SONGSET';
+const GET_LEVELSONGSET = 'GET_LEVELSONGSET';
 
 export function getNumFilteredSongs() {
    //this function is for the homeSongSet only; level should determined here
@@ -74,6 +75,13 @@ export function getSongSet(userId) {
    }
 }
 
+export function getLevelSongSet(obj) {
+   return {
+      type: 'GET_LEVELSONGSET',
+      payload: axios.post('/api/songs/levelsongset', obj)
+   }
+}
+
 export default function reducer(state=initialState, action) {
    const {type, payload} = action;
    switch(type) {
@@ -99,6 +107,11 @@ export default function reducer(state=initialState, action) {
             userGeneratedSongSet: payload.data
          }
       case(`${GET_SONGSET}_FULFILLED`):
+         return {
+            ...state,
+            userGeneratedSongSet: payload.data
+         }
+      case(`${GET_LEVELSONGSET}_FULFILLED`):
          return {
             ...state,
             userGeneratedSongSet: payload.data

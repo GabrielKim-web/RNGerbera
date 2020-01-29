@@ -76,7 +76,7 @@ class WeightApplierSongSet extends Component {
             <div className="alertmessage">
                {message}
             </div>
-            <form className="numlevelentries">
+            <form className="numentries">
                <button onClick={this.numLevelReducer}>-</button>
                {numLevels}
                <button onClick={this.numLevelAdder}>+</button>
