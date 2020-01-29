@@ -1,0 +1,130 @@
+@use 'Home';
+#DefaultSongSet, #WeightApplierSongSet, #LevelSelectSongSet {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: auto;
+  border-radius: 20px;
+  background-color: #dbfdff;
+  width: 90%;
+}
+
+#DefaultSongSet button, #WeightApplierSongSet button, #LevelSelectSongSet button {
+  margin: 20px auto;
+  width: 20%;
+  font-size: 14px;
+}
+
+#DefaultSongSet form, #WeightApplierSongSet .weightentries, #LevelSelectSongSet .numsongentries {
+  padding: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  text-align: center;
+}
+
+#WeightApplierSongSet .numentries, #LevelSelectSongSet .numentries {
+  margin: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+#WeightApplierSongSet .numentries p, #LevelSelectSongSet .numentries p {
+  margin: 10px 0 0 0;
+}
+
+#WeightApplierSongSet .numentries button, #LevelSelectSongSet .numentries button {
+  margin: 10px;
+  width: 50px;
+}
+
+.setData h3 {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.setData .noSongSet {
+  text-align: center;
+  border-radius: 20px;
+  background-color: #dbfdff;
+  width: 95%;
+  margin: auto;
+}
+
+.homeSongSet {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 95%;
+  margin: auto;
+  border-radius: 20px;
+  background-color: #dbfdff;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+#DefaultSongSet form div {
+  margin: auto;
+}
+
+#WeightApplierSongSet .weightentries p {
+  margin: 0;
+}
+
+#WeightApplierSongSet .numsongentries {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 20px;
+}
+
+#WeightApplierSongSet .numsongentries p {
+  margin: 0;
+}
+
+#WeightApplierSongSet .numsongentries select {
+  margin: 0 20px;
+}
+
+#WeightApplierSongSet .levelWeightForm {
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 20px;
+  padding: 20px;
+  margin: 10px;
+}
+
+#LevelSelectSongSet .numsongentries p {
+  margin: 0;
+}
+
+#LevelSelectSongSet .songLevelForm {
+  margin: 10px;
+}
+/*# sourceMappingURL=SongSet.css.map */

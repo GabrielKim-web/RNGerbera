@@ -1,0 +1,26 @@
+.radiobuttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border-radius: 20px;
+  background-color: #dbfdff;
+}
+
+.radiobuttons {
+  margin: 20px auto;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  width: 50%;
+}
+
+@media screen and (max-width: 650px) {
+  .radiobuttons {
+    width: 75%;
+  }
+}
+/*# sourceMappingURL=RadioButtonSearch.css.map */

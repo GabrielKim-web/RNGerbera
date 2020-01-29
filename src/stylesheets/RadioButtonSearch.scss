@@ -1,0 +1,19 @@
+%underlying-border {
+   display: flex;
+   border-radius: 20px;
+   background-color: rgb(219, 253, 255);
+}
+
+.radiobuttons {
+   @extend %underlying-border;
+   margin: 20px auto;
+   justify-content: space-evenly;
+   flex-direction: row;
+   width: 50%;
+}
+
+@media screen and (max-width: 650px) {
+   .radiobuttons {
+      width: 75%;
+   }
+}

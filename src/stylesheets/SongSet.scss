@@ -1,5 +1,130 @@
 @use 'Home';
 
-.userSongSet {
-   @extend .homeSongSet;
+%input-field {
+   display: flex;
+   flex-direction: column;
+   margin: auto;
+   border-radius: 20px;
+   background-color: rgb(219, 253, 255);
+   width: 90%;
+}
+
+%songset-form-button {
+   margin: 20px auto;
+   width: 20%;
+   font-size: 14px;
+}
+
+%form-input {
+   padding: 10px;
+   display: flex;
+   justify-content: space-evenly;
+   flex-wrap: wrap;
+   text-align: center;
+}
+
+%entry-form {
+   margin: auto;
+   display: flex;
+   align-items: center;
+   flex-direction: column;
+   p {
+      margin: 10px 0 0 0;
+   }
+   button {
+      margin: 10px;
+      width: 50px;
+   }
+}
+
+.setData {
+   h3 {
+      text-align: center;
+      margin-top: 20px;
+   }
+   .noSongSet {
+      text-align: center;
+      border-radius: 20px;
+      background-color: rgb(219, 253, 255);
+      width: 95%;
+      margin: auto;
+   }
+}
+
+.homeSongSet {
+   display: flex;
+   width: 95%;
+   margin: auto;
+   border-radius: 20px;
+   background-color: rgb(219, 253, 255);
+   justify-content: space-evenly;
+   flex-wrap: wrap;
+}
+
+#DefaultSongSet {
+   @extend %input-field;
+   form {
+      @extend %form-input;
+      div {
+         margin: auto;
+      }
+   }
+   button {
+      @extend %songset-form-button;
+   }
+}
+
+#WeightApplierSongSet {
+   @extend %input-field;
+   .numentries {
+      @extend %entry-form;
+   }
+   .weightentries {      
+      @extend %form-input;
+      p {
+         margin: 0;
+      }
+   }
+   .numsongentries {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 20px;
+      p {
+         margin: 0;
+      }
+      select {
+         margin: 0 20px;
+      }
+   }
+   button {
+      @extend %songset-form-button;
+   }
+
+   .levelWeightForm {
+      background-color: white;
+      border: 1px solid black;
+      border-radius: 20px;
+      padding: 20px;
+      margin: 10px;
+   }
+}
+
+#LevelSelectSongSet {
+   @extend %input-field;
+   .numentries {
+      @extend %entry-form;
+   }
+   .numsongentries {      
+      @extend %form-input;
+      p {
+         margin: 0;
+      }
+   }
+   button {
+      @extend %songset-form-button;
+   }
+   .songLevelForm {
+      margin: 10px;
+   }
 }

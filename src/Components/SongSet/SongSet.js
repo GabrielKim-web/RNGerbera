@@ -6,6 +6,7 @@ import LevelSelectSongSet from './LevelSelectSongSet';
 import WeightApplierSongSet from './WeightApplierSongSet';
 import RadioButtonSearch from './RadioButtonSearch';
 import DisplaySongCard from '../GetRandomSong/DisplaySongCard';
+import '../../stylesheets/SongSet.css';
 class SongSet extends Component {
    constructor() {
       super();
@@ -59,36 +60,38 @@ class SongSet extends Component {
                songs={songs}/>
             )
       }
-      // if(!this.props.user_id) {
-      //    return(
-      //       <div className="headliner">
-      //          <h3>You must be logged in to do that.</h3>
-      //       </div>
-      //    )
-      // } else {
+      if(!this.props.user_id) {
+         return(
+            <div className="headliner">
+               <h3>You must be logged in to do that.</h3>
+            </div>
+         )
+      } else {
          return (
             <div id = "SongSet">
                <RadioButtonSearch 
                handleInput={this.handleRadioInput}
                currentSearchState={this.state.currentSearchState}/>
                {content}
-               <h3>Your Set</h3>
-               {this.props.userGeneratedSongSet[0] ? 
-               <div className="homeSongSet">
-                  {this.props.userGeneratedSongSet.map((element, index) => {
-                     return(
-                        <DisplaySongCard key={index+1}
-                        info={element}/>
-                     )
-                  })}
-                  {/* button for bot goes here! */}
+               <div className="setData">
+                  <h3>Your Set</h3>
+                  {this.props.userGeneratedSongSet[0] ? 
+                  <div className="homeSongSet">
+                     {this.props.userGeneratedSongSet.map((element, index) => {
+                        return(
+                           <DisplaySongCard key={index+1}
+                           info={element}/>
+                        )
+                     })}
+                     {/* button for bot goes here! */}
+                  </div>
+                     : <div className="noSongSet">
+                        No data to show here...
+                  </div>}
                </div>
-                  : <div className="noSongSet">
-                     No data to show here...
-               </div>}
             </div>
          )
-      // }
+      }
    }
 }
 

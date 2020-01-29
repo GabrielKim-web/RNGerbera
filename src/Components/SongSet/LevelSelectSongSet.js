@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {getLevelSongSet} from '../../redux/reducers/songsetReducer';
+import '../../stylesheets/SongSet.css';
 
 class LevelSelectSongSet extends Component {
    constructor () {
@@ -42,7 +43,6 @@ class LevelSelectSongSet extends Component {
 
    sendInfo() {
       const {numSongs} = this.state;
-      // this.props.getLevelSongSet({level1, level2, level3, level4, level5, level6, level7});
       // Send ONE ARRAY that's in an object. {[level1, level2, level3]} that's equivalent to current numSongsState
       let pickedLevels = [];
       for (let i = 1; i <= numSongs; i++) {
@@ -64,14 +64,19 @@ class LevelSelectSongSet extends Component {
                {message}
             </div>
             <form className="numentries">
-               <button onClick={this.numSongReducer}>-</button>
-               {numSongs}
-               <button onClick={this.numSongAdder}>+</button>
+               <div className="numentriesTitle">
+                  <p>Number of songs (3-7)</p>
+               </div>
+               <div className="numentriesform">
+                  <button onClick={this.numSongReducer}>-</button>
+                  {numSongs}
+                  <button onClick={this.numSongAdder}>+</button>
+               </div>
             </form>
             <form className="numsongentries">
                {songsArray.map((element, index) => {
                   return(
-                     <div key={`song${index+1}`}>
+                     <div key={`song${index+1}`} className="songLevelForm">
                         <p>{`Level of song ${element}`}</p>
                         <select onChange={(e) => {this.setState({[`level${element}`]: e.target.value})}}>
                            {levels.map((element2, index2) => {

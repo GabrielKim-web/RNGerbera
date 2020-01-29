@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {getWeightSongSet} from '../../redux/reducers/songsetReducer';
+import '../../stylesheets/SongSet.css';
 
 class WeightApplierSongSet extends Component {
    constructor () {
@@ -77,9 +78,14 @@ class WeightApplierSongSet extends Component {
                {message}
             </div>
             <form className="numentries">
-               <button onClick={this.numLevelReducer}>-</button>
-               {numLevels}
-               <button onClick={this.numLevelAdder}>+</button>
+               <div className="numentriesTitle">
+                  <p>Number of weights (2-4)</p>
+               </div>
+               <div className="numentriesform">
+                  <button onClick={this.numLevelReducer}>-</button>
+                  {numLevels}
+                  <button onClick={this.numLevelAdder}>+</button>
+               </div>
             </form>
             <form className="numsongentries">
                <p>Number of songs (default: 3)</p>
@@ -94,7 +100,7 @@ class WeightApplierSongSet extends Component {
             <form className="weightentries">
                {levelArray.map((element, index) => {
                   return (
-                     <div key={index+1}>
+                     <div key={index+1} className="levelWeightForm">
                         <div className="levelWeightTitle">
                            <p>LevelWeight {element}</p>
                         </div>

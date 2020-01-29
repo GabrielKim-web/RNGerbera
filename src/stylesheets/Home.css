@@ -26,6 +26,11 @@
   margin: 10px auto;
 }
 
+.headliner h3 {
+  margin: auto;
+  padding: 5px;
+}
+
 .cardbody {
   width: 95%;
   -webkit-box-orient: vertical;
