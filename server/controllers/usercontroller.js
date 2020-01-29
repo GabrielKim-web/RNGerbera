@@ -61,7 +61,9 @@ const loginUser = async (req, res) => {
       if (checkPass) {
          req.session.user = {
             user_id: userid[0].user_id, 
-            username: userid[0].username
+            username: userid[0].username,
+            // experimental for now
+            is_admin: userid[0].is_admin
          }
          res.status(200).json(req.session.user);
       } else {

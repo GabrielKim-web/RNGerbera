@@ -45,16 +45,20 @@ class SongList extends Component {
       setTimeout(() => this.props.getSongList(this.state.pageNum), 100);
    }
    render() {
-      const {songList, numSongs} = this.props;
+      const {songList, numSongs, is_Admin} = this.props;
       const {pageNum} = this.state;
       return(
          <div id="SongList">
             <div className="songlistdata">
-               <h1>SongList</h1>
                {/* 1/16 9:21: AddSong button should only show if the user is an admin
                Check the user currently logged in to see if this true or not. */}
-               <AddSong addSong={this.props.addSong}
-               update={this.updateSongList}/>
+               {is_Admin ? 
+               <div className="admincontrols">
+                  <AddSong addSong={this.props.addSong}
+                  update={this.updateSongList}/>
+               </div>
+               : null}
+               
             </div>
             {/* 1/15 10:31: Need to style this table. */}
             <table className="songTable">
@@ -69,19 +73,29 @@ class SongList extends Component {
                      <th>MXM</th>
                      <th>NO_FX</th>
                      {/* User must be admin for this column to appear. */}
-                     <th></th>
+                     {is_Admin ? <th></th> : null}
                   </tr>
                </thead>
                <tbody>
                      {songList ? songList.map((element, index) => {
-                        return(
-                           <Song key={index+1} 
-                           info={element} 
-                           number={((pageNum-1)*50) +index+1}
-                           update={this.updateSongList}
-                           delete={this.props.deleteSong}
-                           edit={this.props.editSong}/>
-                        )
+                        // check if admin exists
+                        if (is_Admin) {
+                           return(
+                              <Song key={index+1} 
+                              info={element} 
+                              number={((pageNum-1)*50) +index+1}
+                              update={this.updateSongList}
+                              delete={this.props.deleteSong}
+                              edit={this.props.editSong}/>
+                           )
+                        } else {
+                           return(
+                              <Song key={index+1} 
+                              info={element} 
+                              number={((pageNum-1)*50) +index+1}
+                              update={this.updateSongList}/>
+                           )
+                        }
                      }) : null}
                </tbody>
             </table>
@@ -99,7 +113,9 @@ class SongList extends Component {
 const mapStateToProps = reduxState => {
    return {
       songList: reduxState.song.songlist,
-      numSongs: reduxState.song.numSongs
+      numSongs: reduxState.song.numSongs,
+      // EXPERIMENTAL
+      is_Admin: reduxState.user.is_Admin
    }
 }
 

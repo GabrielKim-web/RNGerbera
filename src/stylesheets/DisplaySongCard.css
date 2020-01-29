@@ -1,4 +1,9 @@
-@use 'Home';
+@import url("https://fonts.googleapis.com/css?family=Noto+Sans+JP&display=swap");
+#DisplaySongCard .defaultTitle, #DisplaySongCard .longTitle {
+  font-family: 'Noto Sans JP', sans-serif;
+  margin: auto;
+}
+
 #DisplaySongCard {
   background-color: white;
   border: 1px solid black;
@@ -25,20 +30,18 @@
 
 #DisplaySongCard .defaultTitle {
   font-size: 1.4rem;
-  margin: auto;
 }
 
 #DisplaySongCard .longTitle {
   font-size: 1rem;
-  margin: auto;
 }
 
 #DisplaySongCard a {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
 }
 
 #DisplaySongCard img {
-  width: 40%;
+  width: 50%;
   margin: 10px;
 }
 
@@ -61,7 +64,7 @@
 
 @media screen and (max-width: 500px) {
   #DisplaySongCard {
-    height: 40vh;
+    height: 35vh;
     width: 70vw;
   }
   #DisplaySongCard button {

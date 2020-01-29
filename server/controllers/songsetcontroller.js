@@ -88,7 +88,21 @@ const getDefaultSongSet = async (req, res) => {
    res.status(200).json(defaultSet);
 }
 
+const getLevelSongSet = async (req, res) => {
+   const {pickedLevels} = req.body;
+   const db = req.app.get('db');
+   const userSet = [];
+   for (let i = 0; i < pickedLevels.length; i++) {
+      let numSongs = await db.get_filtered_num_songs(pickedLevels[i]);
+      let filteredSong = await db.get_homeset(pickedLevels[i], numSongs[0].count);
+      filteredSong = messageCreator(filteredSong[0], pickedLevels[i]);
+      userSet.push(filteredSong);
+   }
+   res.status(200).json(userSet);
+}
+
 module.exports = {
    getNumFilteredSongs,
-   getDefaultSongSet
+   getDefaultSongSet,
+   getLevelSongSet
 }

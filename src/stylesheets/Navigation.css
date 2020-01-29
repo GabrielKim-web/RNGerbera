@@ -8,6 +8,16 @@
           flex-direction: row;
 }
 
+.navmenu button, .DropdownNav button, .navmenu a:hover, .navbar-brand a:hover {
+  text-decoration: none;
+  color: #007bff;
+}
+
+.navmenu button, .DropdownNav button {
+  border: none;
+  background-color: lightblue;
+}
+
 .navmenu {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -37,9 +47,67 @@
           justify-content: center;
 }
 
+.hamburger {
+  height: 40px;
+  display: none;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.DropdownNav {
+  -webkit-transition: -webkit-transform 0.5s;
+  transition: -webkit-transform 0.5s;
+  transition: transform 0.5s;
+  transition: transform 0.5s, -webkit-transform 0.5s;
+  width: 100vw;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.DropdownNav .mobilenav {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: center;
+  padding: 0;
+  margin: 5px;
+}
+
+.DropdownNav .login li, .DropdownNav .user li, .DropdownNav .persistent li {
+  list-style-type: none;
+  margin: 10px 0;
+}
+
+.DropdownNav .usercred {
+  border-bottom: 1px solid white;
+}
+
+.closed {
+  background-color: lightblue;
+  -webkit-transform: translateY(-300px);
+          transform: translateY(-300px);
+}
+
+.opened {
+  background-color: lightblue;
+  border: 1px solid #daf1ff;
+  -webkit-transform: translateY(10px);
+          transform: translateY(10px);
+}
+
 @media screen and (max-width: 768px) {
   .navmenu {
     display: none;
+  }
+  .hamburger {
+    display: block;
   }
 }
 /*# sourceMappingURL=Navigation.css.map */

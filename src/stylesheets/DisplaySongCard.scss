@@ -1,4 +1,8 @@
-@use 'Home';
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP&display=swap');
+%japanese-title {
+   font-family: 'Noto Sans JP', sans-serif;
+   margin: auto;
+}
 #DisplaySongCard {
    background-color: white;
    border: 1px solid black;
@@ -13,19 +17,19 @@
    text-align: center;
    align-items: center;
    .defaultTitle {
-      font-size: 1.4rem;
-      margin: auto;
+      font-size: 1.4rem; 
+      @extend %japanese-title;
    }
    .longTitle {
       font-size: 1rem;
-      margin: auto;
+      @extend %japanese-title;
    }
    a {
-      font-size: 1.5rem;
+      font-size: 1.4rem;
    }
    img {
       //add percentage value for padding-top to maintain aspect ratio
-      width: 40%;
+      width: 50%;
       margin: 10px;
    }
    button {
@@ -43,7 +47,7 @@
 
 @media screen and (max-width: 500px) {
    #DisplaySongCard {
-      height: 40vh;
+      height: 35vh;
       width: 70vw;
       button {
          margin-left: 60vw;

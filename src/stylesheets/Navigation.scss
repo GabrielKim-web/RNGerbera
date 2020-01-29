@@ -2,6 +2,18 @@
    display: flex;
    flex-direction: row;
 }
+
+//no change to the link's color nor underlined on hover
+%hover-nochange {
+   text-decoration: none;
+   color: #007bff;
+}
+
+%logout-button {
+   border: none;
+   background-color: lightblue;
+   @extend %hover-nochange;
+}
 .navmenu {
    display: flex;
    float: right;
@@ -30,10 +42,78 @@
    .user {
       @extend %flex-row;
    }
+   a:hover {
+      @extend %hover-nochange;
+   }
+   button {
+      @extend %logout-button;
+   }
 }
 
+.navbar-brand {
+   a:hover {
+      @extend %hover-nochange;
+   }
+}
+// classname for image that toggles dropdown
+.hamburger {
+   height: 40px;
+   // hidden by default, but shows on mobile view
+   display: none;
+   z-index: 1;
+   cursor: pointer;
+}
+
+.DropdownNav {
+   // at any point the property (transform, width, height, even background-color!) changes for the element, transition will
+   // "transition" to the other point over a period of time (0.5s)
+   transition: transform 0.5s;
+   width: 100vw;
+   position: relative;
+   display: flex;
+   .mobilenav {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      padding: 0;
+      margin: 5px;
+   }
+   button {
+      @extend %logout-button;
+   }
+   .login li, .user li, .persistent li {
+      list-style-type: none;
+      margin: 10px 0;
+   }
+   .usercred {
+      border-bottom: 1px solid white;
+   }
+}
+// Both open and close will not show when the navmenu is being displayed.
+.closed {
+   // defines content when dropdown is open
+   background-color: lightblue;
+   transform: translateY(-300px);
+}
+
+// menu when it is rendered; will be different later
+.opened {
+   // defines content when dropdown is closed
+   background-color: lightblue;
+   border: 1px solid rgb(218, 241, 255);
+   transform: translateY(10px);
+
+}
+
+//media queries are always defined at the bottom of the file
 @media screen and (max-width: 768px) {
+   // the regular navlinks disappear on mobile view
    .navmenu {
       display: none;
+   }
+   // ...and the hamburger image appears in their place!
+   .hamburger {
+      display: block;
    }
 }

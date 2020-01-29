@@ -5,7 +5,7 @@ const massive = require('massive');
 const app = express();
 const {registerUser, registerAdmin, loginUser, logoutUser, getCurrentUser, getUser, getUserName} = require('./controllers/usercontroller');
 const {getSongList, getFavSong, getNumSongs, addSong, deleteSong, editSong, addFavSong} = require('./controllers/songcontroller');
-const {getNumFilteredSongs, getDefaultSongSet} = require('./controllers/songsetcontroller');
+const {getNumFilteredSongs, getDefaultSongSet, getLevelSongSet} = require('./controllers/songsetcontroller');
 
 const {SERVER_PORT, SESSION_SECRET, CONNECTION_STRING} = process.env;
 
@@ -45,13 +45,12 @@ app.post('/api/songs/add', addSong);
 app.delete('/api/songs/delete/:song_id', deleteSong);
 app.put('/api/songs/edit/:songToEdit', editSong);
 
-//songset endpoints
-app.get('/api/songs/homesongset/:level', getNumFilteredSongs)
+//home songset endpoints
+app.get('/api/songs/homesongset/:level', getNumFilteredSongs);
 
-//MUST MAKE MORE ENDPOINTS FROM songsetReducer
-app.post('/api/songs/defaultsongset', getDefaultSongSet)
-
-
+//user songset endpoints
+app.post('/api/songs/defaultsongset', getDefaultSongSet);
+app.post('/api/songs/levelsongset', getLevelSongSet);
 
 //admin endpoints (user MUST have admin privileges to use these. IMPLEMENT THEM)
 // app.post('/api/songs/add', addSong);

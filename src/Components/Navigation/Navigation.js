@@ -2,27 +2,40 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import {getUser, logoutUser} from '../../redux/reducers/userReducer';
-// import {Nav, Navbar, NavDropdown} from 'react-bootstrap';
+import DropdownNav from './DropdownNav';
 import '../../stylesheets/Navigation.css';
 
 class Navigation extends Component {
+   constructor() {
+      super();
+
+      this.state = {
+         menuStatus: 'closed'
+      }
+      this.toggleMenu=this.toggleMenu.bind(this);
+   }
 
    // I'm going to need a componentDidUpdate to see if the user is logged in or not
    componentDidMount() {
       this.props.getUser();
    }
 
+   toggleMenu = () => {
+      if (this.state.menuStatus === "closed") {
+         this.setState({menuStatus: "opened"});
+      } else {
+         this.setState({menuStatus: "closed"});
+      }
+   }
+
    render() {
       const {user_id, username} = this.props
       return(
+         <>
          <div className="container">
             <div className="navbar-brand">
                <Link to={'/'}>RNGerbera</Link>
             </div>
-            {/* <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navmenu" aria-controls="navmenu" aria-expanded="false" aria-label="Toggle navigation">
-               <span className="navbar-toggler-icon">oof</span>
-            </button> */}
-            {/* <div className="collapse navbar-collapse navigationmenu" id="navmenu"> */}
             <ul className="navmenu">
                <div className="usercred">
                {this.props.username ? (
@@ -42,9 +55,16 @@ class Navigation extends Component {
                   <li><Link to="/songlist">Song list</Link></li>
                </div>
             </ul>
+            <img onClick={this.toggleMenu} className="hamburger" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Hamburger_icon.svg/1200px-Hamburger_icon.svg.png" alt="oof" />
          </div>
-      )
-   }
+         <DropdownNav 
+         username={this.props.username}
+         menuStatus={this.state.menuStatus}
+         user_id={this.props.user_id}
+         toggleMenu={this.toggleMenu}/>
+         </>
+   )
+}
 }
 
 const mapStateToProps = reduxState => {
@@ -55,5 +75,4 @@ const mapStateToProps = reduxState => {
    }
 }
 
-// export default Navigation;
 export default connect(mapStateToProps, {getUser, logoutUser})(Navigation)

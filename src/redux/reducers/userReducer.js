@@ -3,6 +3,7 @@ import axios from 'axios';
 const initialState = {
    user_id: null,
    username: null,
+   is_Admin: false,
    email: null
 }
 
@@ -55,14 +56,15 @@ export default function reducer(state = initialState, action) {
             ...state,
             user_id: payload.data.user_id,
             username: payload.data.username,
-            // is_Admin: payload.data.is_Admin
+            is_Admin: payload.data.is_admin
          }
       case `${LOGOUT_USER}_FULFILLED`:
          return {
             ...state,
             user_id: null,
             username: '',
-            is_Admin: false
+            is_Admin: false,
+            email: null
          }
       case `${REGISTER_USER}_FULFILLED`:
          alert("Account successfully created. Please log in.");
@@ -70,7 +72,7 @@ export default function reducer(state = initialState, action) {
             ...state,
             user_id: payload.data.user_id,
             username: payload.data.username,
-            // is_Admin: payload.data.is_Admin 
+            is_Admin: payload.data.is_admin 
          }
       case `${GET_USER}_FULFILLED`:
          return {
@@ -78,7 +80,7 @@ export default function reducer(state = initialState, action) {
             user_id: payload.data.user_id,
             username: payload.data.username,
             // 11/13 19:54: You kinda don't want this to be on the client side.
-            // is_Admin: payload.data.is_Admin
+            is_Admin: payload.data.is_admin
          }
       default: return state;
    }

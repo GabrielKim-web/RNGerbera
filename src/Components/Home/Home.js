@@ -23,7 +23,9 @@ class Home extends Component {
    render() {
       return(
          <div id="Home">
-            <h1>Home</h1>
+            <div className="headliner">
+               <h1>Home</h1>
+            </div>
             <div className="cardbody">
             {this.props.homeSongSet[0] ? 
                <div className="homeSongSet">
@@ -36,7 +38,9 @@ class Home extends Component {
                      )
                   })}
                </div> : null}
-            <h3>Refreshes at 0:00 EST (UTC/GMT -5)</h3>
+               <div className="cardfooter">
+                  <h3>Refreshes at 0:00 EST (UTC/GMT -5)</h3>
+               </div>
             </div>
          </div>
       )

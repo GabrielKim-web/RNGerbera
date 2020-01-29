@@ -4,18 +4,27 @@
 }
 
 #SongList .songlistdata {
-  width: 50%;
+  width: 80%;
   text-align: center;
   margin: auto;
+  -webkit-transition: height 0.5s;
+  transition: height 0.5s;
 }
 
 #SongList .songTable, #SongList tr {
   background-color: white;
+  width: 95%;
   margin: auto;
 }
 
 #SongList th {
   padding: 4px;
+}
+
+#SongList th input {
+  border: none;
+  text-align: center;
+  width: 60%;
 }
 
 #SongList .tablenavigation {
@@ -26,5 +35,11 @@
 
 #SongList .page {
   padding: 0 10px;
+}
+
+@media screen and (min-width: 960px) {
+  #SongList .songTable {
+    width: 80%;
+  }
 }
 /*# sourceMappingURL=SongList.css.map */

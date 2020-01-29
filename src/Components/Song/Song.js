@@ -61,16 +61,19 @@ class Song extends Component {
             {/* <th><a href={video_nofx} alt="NO_FX Youtube" target="_blank" rel="noopener noreferrer" title="hahargh">NO FX</a></th> */}
             {video_nofx ? <th><a href={video_nofx} alt="NO_FX Youtube" target="_blank" rel="noopener noreferrer" title="hahargh">NO FX</a></th>
             : <th></th>}
-            <th><button onClick={() => {
-               // BLACK DIAMOND: Add confirmation window to confirm deleting of song
-               this.props.delete(id);
-               this.props.update();
-            }}>Delete</button>
-            <button onClick={() => {
-               this.editSong()
-               this.setState({editing: !editing})
-               // this.props.update()
-            }}>Edit</button></th>
+         {this.props.delete && this.props.edit ? 
+         <th><button onClick={() => {
+            // BLACK DIAMOND: Add confirmation window to confirm deleting of song
+            this.props.delete(id);
+            this.props.update();
+         }}>Delete</button>
+         <button onClick={() => {
+            this.editSong()
+            this.setState({editing: !editing})
+            this.props.update()
+         }}>Edit</button></th> 
+         : null}
+            
          </tr>   
       ) 
       } else {
@@ -78,7 +81,7 @@ class Song extends Component {
             <tr className="body">
                <th>{this.props.number}</th>
                <th><input placeholder="Jacket URL" name="jacket"value={this.state.jacket} onChange={this.handleUserInput}/></th>
-               <th><input placeholder="Song name" name="title" value={this.state.title} onChange={this.handleUserInput}/></th>
+               <th className="songname"><input placeholder="Song name" name="title" value={this.state.title} onChange={this.handleUserInput}/></th>
                <th><input placeholder="1-20" name="nov_level" value={this.state.nov_level} onChange={this.handleUserInput}/>
                <input placeholder="Link to chart" name="nov_link" value={this.state.nov_link} onChange={this.handleUserInput}/></th>
                <th><input placeholder="1-20" name="adv_level" value={this.state.adv_level} onChange={this.handleUserInput}/>
